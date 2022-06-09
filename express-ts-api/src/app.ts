@@ -2,6 +2,8 @@ import express from "express";
 
 const app = express();
 
+const port = 4000;
+
 interface Dog {
   name: string;
   breed: "labrador" | "german shepherd" | "golden retriever";
@@ -87,4 +89,18 @@ app.delete<
   {}
 >("/api/v1/dogs", (req, res) => {
   // your implementation
+  res.send({
+    data: {
+      name: "Rocko",
+      breed: "german shepherd",
+      adopted_at: null,
+      birth_date: null,
+      id: 2,
+    },
+    message: "Dog update",
+  });
+});
+
+app.listen(port, () => {
+  console.log(`API Dogs listening on port ${port}`);
 });
